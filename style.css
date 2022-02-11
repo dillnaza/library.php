@@ -1,0 +1,40 @@
+style {
+    -webkit-text-size-adjust: 100%;
+    --screen-height: 1024px;
+    cursor: default;
+    font-family: 'Nobel-Regular', Helvetica, Arial, sans-serif;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    line-height: 1.81818182;
+    color: #FCFCFC;
+    user-select: none;
+    box-sizing: border-box;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-font-smoothing: antialiased;
+    outline: none;
+    pointer-events: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: inherit;
+    height: 2.7rem;
+    position: relative;
+    bottom: 0;
+}
+.card text-white bg-warning mb-3{
+    float:left;
+    padding-left:10px;
+    max-width: 20rem;
+}
+.card text-white bg-success mb-3{
+    float:left;
+    padding-left:10px;
+    max-width: 20rem;
+}
+.card text-white bg-primary mb-3{
+    float:left;
+    padding-left:10px;
+    max-width: 20rem;
+}
