@@ -14,7 +14,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div style="float:left"; class="collapse navbar-collapse" id="navbarColor03">
+        <div class="collapse navbar-collapse" id="navbarColor03">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Home
@@ -29,21 +29,28 @@
         </div>
     </div>
 </nav>
-<div align="center">
-    <button  type="button" class="btn btn-outline-warning">1-категория</button>
-    <button type="button" class="btn btn-outline-success">2-категория</button>
-    <button type="button" class="btn btn-outline-info">3-категория</button>
-    <button type="button" class="btn btn-outline-success">4-категория</button>
-    <button  type="button" class="btn btn-outline-warning">5-категория</button>
-</div>
-<div class="card text-white bg-warning mb-3">
-    <div class="card-header">1-категория</div>
+<form method="post">
+    <div align="center">
+        <button  type="submit" class="btn btn-outline-warning" value="1" name="cat">1-категория</button>
+        <button type="submit" class="btn btn-outline-success" value="2" name="cat">2-категория</button>
+        <button type="submit" class="btn btn-outline-info" value="3" name="cat">3-категория</button>
+        <button type="submit" class="btn btn-outline-success" value="4" name="cat">4-категория</button>
+        <button  type="submit" class="btn btn-outline-warning" value="5" name="cat">5-категория</button>
+    </div>
+</form>
+<form>
+    <?php
+    $cat = $_POST['cat'];
+    ?>
+    <div class="card text-white bg-warning mb-3">
+    <div class="card-header">x-категория</div>
     <div class="card-body">
         <h4 class="card-title">Количество книг:</h4>
         <p class="card-text">первая</p>
         <p class="card-text">вторая</p>
     </div>
-</div>
+    </div>
+</form>
 <div align="center">
     <button type="button" class="btn btn-outline-warning">Добавить</button>
     <button type="button" class="btn btn-outline-danger">Удалить</button>
