@@ -55,5 +55,42 @@
     <button type="button" class="btn btn-outline-warning">Добавить</button>
     <button type="button" class="btn btn-outline-danger">Удалить</button>
 </div>
+<?php
+
+if (isset($_POST['kat']) && isset($_POST['st'])){
+
+// Переменные с формы
+    $kat = $_POST['kat'];
+    $st = $_POST['st'];
+
+// Параметры для подключения
+    $host = "localhost";
+    $user = "root"; // Логин БД
+    $pass = ""; // Пароль БД
+    $db_name = "бд"; // Имя БД
+    $db_table = "категория"; // Имя Таблицы БД
+
+// Подключение к базе данных
+//$link = mysqli_connect($host, $user, $pass, $db_name);
+    $mysqli = mysqli_connect($host,$user,$pass,$db_name);
+
+// Если есть ошибка соединения, выводим её и убиваем подключение
+    if ($mysqli->connect_error) {
+        die('Ошибка : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
+    }
+
+    $mysqli->set_charset('utf8');
+
+    $result = $mysqli->query("INSERT INTO категория VALUES ('$kat','$st')");
+
+    if ($result == true) echo "Информация занесена в базу данных";
+    else echo "Информация не занесена в базу данных";
+    echo "</br>";
+    $sql = $mysqli->query("SELECT категория, ставка FROM категория");
+    while ($result = mysqli_fetch_array($sql)) {
+        echo "{$result['категория']}: {$result['ставка']} </br>";
+    }
+}
+?>
 </body>
 </html>
