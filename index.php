@@ -8,6 +8,7 @@
 </head>
 
 <body>
+<script>let $val</script>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid" >
         <a class="navbar-brand" href="#">Библиотека "READER"</a>
@@ -32,39 +33,46 @@
 </nav>
 
 <form method="post">
-    <div align="center">
-        <button  type="submit" class="btn btn-outline-warning" value="1" name="cat">1-категория</button>
-        <button type="submit" class="btn btn-outline-success" value="2" name="cat">2-категория</button>
-        <button type="submit" class="btn btn-outline-info" value="3" name="cat">3-категория</button>
-        <button type="submit" class="btn btn-outline-success" value="4" name="cat">4-категория</button>
-        <button  type="submit" class="btn btn-outline-warning" value="5" name="cat">5-категория</button>
+    <div align="center" id="butt">
+        <input  type="button" class="btn btn-outline-warning" value="1-категория" name="cat[]" onclick="ins(e)">
+        <input type="button" class="btn btn-outline-success" value="2-категория" name="cat[]" onclick="ins(e)">
+        <input type="button" class="btn btn-outline-info" value="3-категория" name="cat[]" onclick="ins(e)">
+        <input type="button" class="btn btn-outline-success" value="4-категория" name="cat[]" onclick="ins(e)">
+        <input  type="button" class="btn btn-outline-warning" value="5-категория" name="cat[]" onclick="ins(e)">
     </div>
 </form>
 
 <form>
-    <?php
-    $cat = $_POST['cat'];
-    ?>
-    <div class="card text-white bg-warning mb-3">
-    <div class="card-header">x-категория</div>
-    <div class="card-body">
-        <h4 class="card-title">Количество книг:</h4>
-        <p class="card-text">первая</p>
-        <p class="card-text">вторая</p>
-    </div>
+    <script>
+        function ins(e){
+            let o = document.getElementsByName('cat[]');
+            let l = o.length;
+            let i;
+            for (i=0; i<l; i++)
+                if (o[i] == e) {let ind = i; break;}
+        }
+    </script>
+    <div class="card text-white bg-warning mb-3" id="Form">
+        <div class="card-header"><script>ind</script>-категория</div>
+        <div class="card-body">
+            <h4 class="card-title">Количество книг:</h4>
+            <p class="card-text">первая</p>
+            <p class="card-text">вторая</p>
+        </div>
     </div>
 </form>
 
 <div>
     <button type="button" class="btn btn-outline-warning" onclick="openForm()">Добавить/удалить</button>
 </div>
+
 <div class="modal-content rounded-5 shadow" style="display: none; position: fixed" id="mForm">
     <div class="modal-header p-5 pb-4 border-bottom-0">
         <h4 class="fw-bold mb-0">Добавление/Удаление данных</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeForm()"></button>
     </div>
 
-    <div class="modal-body p-5 pt-0" >
+    <div class="modal-body p-5 pt-0">
         <form class="">
             <div>
                 <input type="text" id="bookInput"><label for="bookInput"> Называние книги</label>
@@ -79,6 +87,8 @@
 
     <script>
         function reForm() {
+            //$book=document.getElementById('bookInput').value;
+            //$cat=document.getElementById('catInput').value;
             document.getElementById('bookInput').value = "";
             document.getElementById('catInput').value = "";
         }
@@ -92,6 +102,9 @@
             document.getElementById('bookInput').value = "";
             document.getElementById('catInput').value = "";
         }
+
+        function opForm() {
+            document.getElementById("Form").style.display = "block";
     </script>
 </div>
 
@@ -139,7 +152,7 @@ if (isset($cat)){
 
     $mysqli->set_charset('utf8');
 
-    $result = $mysqli->query("INSERT INTO category VALUES ('$cat')");
+    $result = $mysqli->query("INSERT INTO category(category) VALUES ('$cat')");
 
     if ($result == true) echo "Информация занесена в базу данных";
     else echo "Информация не занесена в базу данных";
