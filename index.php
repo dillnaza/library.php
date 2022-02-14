@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <title>Библиотека</title>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid" >
@@ -24,11 +25,12 @@
             </ul>
             <form class="d-flex">
                 <input class="form-control me-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Поиск</button>
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="butt">Поиск</button>
             </form>
         </div>
     </div>
 </nav>
+
 <form method="post">
     <div align="center">
         <button  type="submit" class="btn btn-outline-warning" value="1" name="cat">1-категория</button>
@@ -38,6 +40,7 @@
         <button  type="submit" class="btn btn-outline-warning" value="5" name="cat">5-категория</button>
     </div>
 </form>
+
 <form>
     <?php
     $cat = $_POST['cat'];
@@ -51,24 +54,79 @@
     </div>
     </div>
 </form>
-<div align="center">
-    <button type="button" class="btn btn-outline-warning">Добавить</button>
-    <button type="button" class="btn btn-outline-danger">Удалить</button>
+
+<div>
+    <button type="button" class="btn btn-outline-warning" onclick="openForm()">Добавить/удалить</button>
 </div>
+<div class="modal-content rounded-5 shadow" style="display: none; position: fixed" id="mForm">
+    <div class="modal-header p-5 pb-4 border-bottom-0">
+        <h4 class="fw-bold mb-0">Добавление/Удаление данных</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeForm()"></button>
+    </div>
+
+    <div class="modal-body p-5 pt-0" >
+        <form class="">
+            <div>
+                <input type="text" id="bookInput"><label for="bookInput"> Называние книги</label>
+            </div>
+            <div>
+                <input type="text" id="catInput"><label for="catInput">Категория книги</label>
+            </div>
+            <button type="button" class="btn btn-outline-warning" onclick="reForm()">Добавить</button>
+            <button type="button" class="btn btn-outline-danger" onclick="openedForm()">Удалить</button>
+        </form>
+    </div>
+
+    <script>
+        function reForm() {
+            document.getElementById('bookInput').value = "";
+            document.getElementById('catInput').value = "";
+        }
+
+        function openForm() {
+            document.getElementById("mForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("mForm").style.display = "none";
+            document.getElementById('bookInput').value = "";
+            document.getElementById('catInput').value = "";
+        }
+    </script>
+</div>
+
+<div class="modal-content rounded-4 shadow" id="myForm" style="display: none; position: fixed">
+    <div class="modal-body p-4 text-center">
+        <h5 class="mb-0">Удаление</h5>
+        <p class="mb-0">Вы уверены, что хотите удалить?</p>
+    </div>
+    <div class="modal-footer flex-nowrap p-0">
+        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right" onclick="closedForm()"><strong>Да, удалить</strong></button>
+        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal" onclick="closedForm()">Нет, спасибо</button>
+    </div>
+
+    <script>
+        function openedForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closedForm() {
+            document.getElementById("myForm").style.display = "none";
+            document.getElementById('bookInput').value = "";
+            document.getElementById('catInput').value = "";
+        }
+    </script>
+</div>
+
 <?php
-
-if (isset($_POST['kat']) && isset($_POST['st'])){
-
-// Переменные с формы
-    $kat = $_POST['kat'];
-    $st = $_POST['st'];
+if (isset($cat)){
 
 // Параметры для подключения
     $host = "localhost";
     $user = "root"; // Логин БД
     $pass = ""; // Пароль БД
-    $db_name = "бд"; // Имя БД
-    $db_table = "категория"; // Имя Таблицы БД
+    $db_name = "baza"; // Имя БД
+    $db_table = "category"; // Имя Таблицы БД
 
 // Подключение к базе данных
 //$link = mysqli_connect($host, $user, $pass, $db_name);
@@ -81,14 +139,14 @@ if (isset($_POST['kat']) && isset($_POST['st'])){
 
     $mysqli->set_charset('utf8');
 
-    $result = $mysqli->query("INSERT INTO категория VALUES ('$kat','$st')");
+    $result = $mysqli->query("INSERT INTO category VALUES ('$cat')");
 
     if ($result == true) echo "Информация занесена в базу данных";
     else echo "Информация не занесена в базу данных";
     echo "</br>";
-    $sql = $mysqli->query("SELECT категория, ставка FROM категория");
+    $sql = $mysqli->query("SELECT name, category FROM book");
     while ($result = mysqli_fetch_array($sql)) {
-        echo "{$result['категория']}: {$result['ставка']} </br>";
+        echo "{$result['категория']}: {$result['name']} </br>";
     }
 }
 ?>
