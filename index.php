@@ -42,19 +42,18 @@
     </div>
 </form>
 
-<script>
-    function ins(e){
-        let o = document.getElementsByName('cat[]');
-        let l = o.length;
-        let i;
-        let ind;
-        for (i=0; i<l; i++)
-            if (o[i] == e) {ind = i; break;}
-        alert(ind);
-    }
-</script>
-
 <form>
+    <script>
+        function ins(e){
+            let o = document.getElementsByName('cat[]');
+            let l = o.length;
+            let i;
+            let ind;
+            for (i=0; i<l; i++)
+                if (o[i] == e) {ind = i; break;}
+            alert(ind);
+        }
+    </script>
     <div class="card text-white bg-warning mb-3" id="Form">
         <div class="card-header"><script>ind</script>-категория</div>
         <div class="card-body">
