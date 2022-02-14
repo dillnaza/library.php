@@ -66,7 +66,7 @@
 </form>
 
 <div>
-    <button type="button" class="btn btn-outline-warning" onclick="openForm()">Добавить/удалить</button>
+    <button type="button" class="btn btn-outline-warning" onclick="openForm()">Добавить/Удалить</button>
 </div>
 
 <div class="modal-content rounded-5 shadow" style="display: none; position: fixed" id="mForm">
@@ -108,6 +108,16 @@
 
         function opForm() {
             document.getElementById("Form").style.display = "block";
+        }
+        function openedForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closedForm() {
+            document.getElementById("myForm").style.display = "none";
+            document.getElementById('bookInput').value = "";
+            document.getElementById('catInput').value = "";
+        }
     </script>
 </div>
 
@@ -120,18 +130,6 @@
         <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right" onclick="closedForm()"><strong>Да, удалить</strong></button>
         <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal" onclick="closedForm()">Нет, спасибо</button>
     </div>
-
-    <script>
-        function openedForm() {
-            document.getElementById("myForm").style.display = "block";
-        }
-
-        function closedForm() {
-            document.getElementById("myForm").style.display = "none";
-            document.getElementById('bookInput').value = "";
-            document.getElementById('catInput').value = "";
-        }
-    </script>
 </div>
 
 <?php
