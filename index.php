@@ -34,24 +34,27 @@
 
 <form method="post">
     <div align="center" id="butt">
-        <input  type="button" class="btn btn-outline-warning" value="1-категория" name="cat[]" onclick="ins(e)">
-        <input type="button" class="btn btn-outline-success" value="2-категория" name="cat[]" onclick="ins(e)">
-        <input type="button" class="btn btn-outline-info" value="3-категория" name="cat[]" onclick="ins(e)">
-        <input type="button" class="btn btn-outline-success" value="4-категория" name="cat[]" onclick="ins(e)">
-        <input  type="button" class="btn btn-outline-warning" value="5-категория" name="cat[]" onclick="ins(e)">
+        <input  type="button" class="btn btn-outline-warning" value="1-категория" name="cat[]" onclick="ins()">
+        <input type="button" class="btn btn-outline-success" value="2-категория" name="cat[]" onclick="ins()">
+        <input type="button" class="btn btn-outline-info" value="3-категория" name="cat[]" onclick="ins()">
+        <input type="button" class="btn btn-outline-success" value="4-категория" name="cat[]" onclick="ins()">
+        <input  type="button" class="btn btn-outline-warning" value="5-категория" name="cat[]" onclick="ins()">
     </div>
 </form>
 
+<script>
+    function ins(e){
+        let o = document.getElementsByName('cat[]');
+        let l = o.length;
+        let i;
+        let ind;
+        for (i=0; i<l; i++)
+            if (o[i] == e) {ind = i; break;}
+        alert(ind);
+    }
+</script>
+
 <form>
-    <script>
-        function ins(e){
-            let o = document.getElementsByName('cat[]');
-            let l = o.length;
-            let i;
-            for (i=0; i<l; i++)
-                if (o[i] == e) {let ind = i; break;}
-        }
-    </script>
     <div class="card text-white bg-warning mb-3" id="Form">
         <div class="card-header"><script>ind</script>-категория</div>
         <div class="card-body">
