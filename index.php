@@ -30,8 +30,6 @@
             <input  type="button" class="btn btn-cta-primary" target="_blank" value="4-категория" name="cat[]" onclick="opForm()">
             <input  type="button" class="btn btn-cta-secondary"  target="_blank" value="5-категория" name="cat[]" onclick="opForm()">
         </div>
-        <ul class="meta list-inline">
-        </ul>
     </div>
 </section>
 
@@ -63,23 +61,24 @@
             alert(ind);
         }
     </script>
-    <div class="card text-white bg-warning mb-3">
-        <div class="card-header">1-категория</div>
-        <div class="card-body">
-            <h4 class="card-title">Количество книг:
+    <div >
+        <h2>Список книг 1 категории</h2>
+        <div>
+            <h4>Количество книг:
             <?php
             $sqlCount=$mysqli->query("SELECT category.category, Count(name) AS Cname
 FROM category INNER JOIN book ON category.count = book.category
 GROUP BY category.category
 HAVING ((category.category)=1)");
             while ($resul = mysqli_fetch_array($sqlCount))
-            echo "{$resul['Cname']} </br>";"</h4>";
+            echo "{$resul['Cname']} </br>";
             $sql = $mysqli->query("SELECT category.count, book.name
 FROM category INNER JOIN book ON category.count = book.category
 WHERE ((category.count)=1);");
             while ($result = mysqli_fetch_array($sql))
                 echo "{$result['name']} </br>";
             ?>
+            </h4>
         </div>
     </div>
 </form>
@@ -88,23 +87,19 @@ WHERE ((category.count)=1);");
     <button type="button" class="btn btn-cta-secondary" target="_blank" onclick="openForm()">Добавить/Удалить</button>
 </form>
 
-<div class="modal-content rounded-5 shadow" style="display: none; position: fixed">
-    <div class="modal-header p-5 pb-4 border-bottom-0"
+<div  style=" position: fixed">
+    <div "
     <form id="mForm">
-        <h4 class="fw-bold mb-0">Добавление/Удаление данных</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeForm()"></button>
-    </div>
-
-        <div class="modal-body p-5 pt-0">
+        <h3 class="fw-bold mb-0">Добавление/Удаление данных</h3>
+        <div >
                 <div>
                     <input type="text" id="bookInput"><label for="bookInput"> Называние книги</label>
                 </div>
                 <div>
                     <input type="text" id="catInput"><label for="catInput">Категория книги</label>
                 </div>
-                <button type="button" class="btn btn-outline-warning" onclick="reForm()">Добавить</button>
-                <button type="button" class="btn btn-outline-danger" onclick="openedForm()">Удалить</button>
-        </div>
+                <button type="button" class="btn btn-cta-secondary"  onclick="reForm()">Добавить</button>
+                <button type="button" class="btn btn-cta-secondary"  onclick="openedForm()">Удалить</button>
     </div>
 
     <script>
@@ -117,7 +112,7 @@ WHERE ((category.count)=1);");
             let cat=document.getElementById('catInput').value;
             document.getElementById("mForm").style.display = "block";
             <?php
-            $add = $mysqli->query("INSERT INTO `book`(`count`, `name`, `category`) VALUES ('10','вино из одуванциков','1')");
+            $add = $mysqli->query("INSERT INTO `book` (`count`, `name`, `category`) VALUES (`10`,`вино из одуванчиков`,`1`)");
 
             if ($add == true) echo "Информация занесена в базу данных";
             else echo "Информация не занесена в базу данных";
@@ -143,21 +138,30 @@ WHERE ((category.count)=1);");
 
         function closedForm() {
             document.getElementById("myForm").style.display = "none";
+            <?php
+            $sql = $mysqli->query("DELETE FROM `book` WHERE `book`.`count` = 10");
+            if ($add == true) echo "Информация удалена из базы данных";
+            else echo "Информация не удалена из базы данных";
+            echo "</br>";
+            ?>
             document.getElementById('bookInput').value = "";
             document.getElementById('catInput').value = "";
+            document.getElementById('bookInput').value = "";
+            document.getElementById('catInput').value = "";
+                ?>
         }
     </script>
 
 </form>
 
-<div class="modal-content rounded-4 shadow" id="myForm" style="display: none; position: fixed">
-    <div class="modal-body p-4 text-center">
-        <h5 class="mb-0">Удаление</h5>
-        <p class="mb-0">Вы уверены, что хотите удалить?</p>
-    </div>
-    <div class="modal-footer flex-nowrap p-0">
-        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right" onclick="closedForm()"><strong>Да, удалить</strong></button>
-        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal" onclick="closedForm()">Нет, спасибо</button>
+<div id="myForm" style=" position: fixed">
+    <di>
+        <h3>Удаление</h3>
+        <p>Вы уверены, что хотите удалить?</p>
+    </di>
+    <div>
+        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right" onclick="closedForm()"><strong><h4>Удалить</h4></strong></button>
+        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal" onclick="closedForm()"><h4>Отмена</h4></button>
     </div>
 </div>
 
