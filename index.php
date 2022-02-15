@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" id="theme-style"  href="C:\OpenServer\domains\example-app\public\test\style.css">
-    <link rel="stylesheet" href="css/style.css">
     <title>Библиотека</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" id="theme-style"  href="plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" id="theme-style" href="css/style.css">
 </head>
 
 <body  data-spy="scroll">
+<header id="header" class="header">
+    <div class="container">
+        <nav id="main-nav" class="main-nav navbar-right" role="navigation">
+            <div class="navbar-collapse collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item"><a class="scroll" href="#about">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section id="promo" class="promo section offset-header">
+    <div class="container text-center">
+        <h2 class="title">Библиотека</h2>
+        <div class="btn" id="butt" align="center">
+            <input  type="button" class="btn btn-cta-secondary" target="_blank" value="1-категория" name="cat[]" onclick="opForm()">
+            <input  type="button" class="btn btn-cta-primary" target="_blank" value="2-категория" name="cat[]" onclick="opForm()">
+            <input  type="button" class="btn btn-cta-secondary" target="_blank" value="3-категория" name="cat[]" onclick="opForm()">
+            <input  type="button" class="btn btn-cta-primary" target="_blank" value="4-категория" name="cat[]" onclick="opForm()">
+            <input  type="button" class="btn btn-cta-secondary"  target="_blank" value="5-категория" name="cat[]" onclick="opForm()">
+        </div>
+        <ul class="meta list-inline">
+        </ul>
+    </div>
+</section>
+
 <?php
     $host = "localhost";
     $user = "root";
@@ -23,33 +50,6 @@
 
     $mysqli->set_charset('utf8');
 ?>
-
-<header id="header" class="header">
-    <div class="container">
-        <nav id="main-nav" class="main-nav navbar-right" role="navigation">
-            <div class="navbar-collapse collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item"><a class="scrollto" href="#about">About</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</header>
-
-<section id="promo" class="promo section offset-header">
-    <div class="container text-center">
-        <h2 class="title">Библиотека</h2>
-        <div class="btns" id="butt" align="center">
-            <input  type="button" class="btn btn-cta-secondary" target="_blank" value="1-категория" name="cat[]" onclick="opForm()">
-            <input  type="button" class="btn btn-cta-primary" target="_blank" value="2-категория" name="cat[]" onclick="opForm()">
-            <input  type="button" class="btn btn-cta-secondary" target="_blank" value="3-категория" name="cat[]" onclick="opForm()">
-            <input  type="button" class="btn btn-cta-primary" target="_blank" value="4-категория" name="cat[]" onclick="opForm()">
-            <input  type="button" class="btn btn-cta-secondary"  target="_blank" value="5-категория" name="cat[]" onclick="opForm()">
-        </div>
-        <ul class="meta list-inline">
-        </ul>
-    </div>
-</section>
 
 <form id="Form">
     <script>
