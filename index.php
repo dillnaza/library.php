@@ -8,7 +8,22 @@
 </head>
 
 <body>
-<script>let $val</script>
+<?php
+    $host = "localhost";
+    $user = "root";
+    $pass = "";
+    $db_name = "baza";
+    $db_table = "category";
+
+    $mysqli = mysqli_connect($host,$user,$pass,$db_name);
+
+    if ($mysqli->connect_error) {
+        die('Ошибка : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
+    }
+
+    $mysqli->set_charset('utf8');
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid" >
         <a class="navbar-brand" href="#">Библиотека "READER"</a>
@@ -32,65 +47,88 @@
     </div>
 </nav>
 
-<form method="post">
+<form>
     <div align="center" id="butt">
-        <input  type="button" class="btn btn-outline-warning" value="1-категория" name="cat[]" onclick="ins()">
-        <input type="button" class="btn btn-outline-success" value="2-категория" name="cat[]" onclick="ins()">
-        <input type="button" class="btn btn-outline-info" value="3-категория" name="cat[]" onclick="ins()">
-        <input type="button" class="btn btn-outline-success" value="4-категория" name="cat[]" onclick="ins()">
-        <input  type="button" class="btn btn-outline-warning" value="5-категория" name="cat[]" onclick="ins()">
+        <input  type="button" class="btn btn-outline-warning" value="1-категория" name="cat[]" onclick="opForm()">
+        <input type="button" class="btn btn-outline-success" value="2-категория" name="cat[]" onclick="opForm()">
+        <input type="button" class="btn btn-outline-info" value="3-категория" name="cat[]" onclick="opForm()">
+        <input type="button" class="btn btn-outline-success" value="4-категория" name="cat[]" onclick="opForm()">
+        <input  type="button" class="btn btn-outline-warning" value="5-категория" name="cat[]" onclick="opForm()">
     </div>
 </form>
 
-<form>
+<form id="Form">
     <script>
+        let ind;
         function ins(e){
             let o = document.getElementsByName('cat[]');
             let l = o.length;
             let i;
-            let ind;
             for (i=0; i<l; i++)
                 if (o[i] == e) {ind = i; break;}
             alert(ind);
         }
     </script>
-    <div class="card text-white bg-warning mb-3" id="Form">
-        <div class="card-header"><script>ind</script>-категория</div>
+    <div class="card text-white bg-warning mb-3">
+        <div class="card-header">1-категория</div>
         <div class="card-body">
-            <h4 class="card-title">Количество книг:</h4>
-            <p class="card-text">первая</p>
-            <p class="card-text">вторая</p>
+            <h4 class="card-title">Количество книг:
+            <?php
+            $sqlCount=$mysqli->query("SELECT category.category, Count(name) AS Cname
+FROM category INNER JOIN book ON category.count = book.category
+GROUP BY category.category
+HAVING ((category.category)=1)");
+            while ($resul = mysqli_fetch_array($sqlCount))
+            echo "{$resul['Cname']} </br>";"</h4>";
+            $sql = $mysqli->query("SELECT category.count, book.name
+FROM category INNER JOIN book ON category.count = book.category
+WHERE ((category.count)=1);");
+            while ($result = mysqli_fetch_array($sql))
+                echo "{$result['name']} </br>";
+            ?>
         </div>
     </div>
 </form>
 
-<div>
+<form>
     <button type="button" class="btn btn-outline-warning" onclick="openForm()">Добавить/Удалить</button>
-</div>
+</form>
 
-<div class="modal-content rounded-5 shadow" style="display: none; position: fixed" id="mForm">
-    <div class="modal-header p-5 pb-4 border-bottom-0">
+<div class="modal-content rounded-5 shadow" style="display: none; position: fixed">
+    <div class="modal-header p-5 pb-4 border-bottom-0"
+    <form id="mForm">
         <h4 class="fw-bold mb-0">Добавление/Удаление данных</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeForm()"></button>
     </div>
 
-    <div class="modal-body p-5 pt-0">
-        <form class="">
-            <div>
-                <input type="text" id="bookInput"><label for="bookInput"> Называние книги</label>
-            </div>
-            <div>
-                <input type="text" id="catInput"><label for="catInput">Категория книги</label>
-            </div>
-            <button type="button" class="btn btn-outline-warning" onclick="reForm()">Добавить</button>
-            <button type="button" class="btn btn-outline-danger" onclick="openedForm()">Удалить</button>
-        </form>
+        <div class="modal-body p-5 pt-0">
+                <div>
+                    <input type="text" id="bookInput"><label for="bookInput"> Называние книги</label>
+                </div>
+                <div>
+                    <input type="text" id="catInput"><label for="catInput">Категория книги</label>
+                </div>
+                <button type="button" class="btn btn-outline-warning" onclick="reForm()">Добавить</button>
+                <button type="button" class="btn btn-outline-danger" onclick="openedForm()">Удалить</button>
+        </div>
     </div>
 
     <script>
+        function opForm() {
+            document.getElementById("Form").style.display = "block";
+        }
+
         function reForm() {
-            //$book=document.getElementById('bookInput').value;
-            //$cat=document.getElementById('catInput').value;
+            let book = document.getElementById('bookInput').value;
+            let cat=document.getElementById('catInput').value;
+            document.getElementById("mForm").style.display = "block";
+            <?php
+            $add = $mysqli->query("INSERT INTO `book`(`count`, `name`, `category`) VALUES ('10','вино из одуванциков','1')");
+
+            if ($add == true) echo "Информация занесена в базу данных";
+            else echo "Информация не занесена в базу данных";
+            echo "</br>";
+            ?>
             document.getElementById('bookInput').value = "";
             document.getElementById('catInput').value = "";
         }
@@ -105,9 +143,6 @@
             document.getElementById('catInput').value = "";
         }
 
-        function opForm() {
-            document.getElementById("Form").style.display = "block";
-        }
         function openedForm() {
             document.getElementById("myForm").style.display = "block";
         }
@@ -118,7 +153,8 @@
             document.getElementById('catInput').value = "";
         }
     </script>
-</div>
+
+</form>
 
 <div class="modal-content rounded-4 shadow" id="myForm" style="display: none; position: fixed">
     <div class="modal-body p-4 text-center">
@@ -131,37 +167,5 @@
     </div>
 </div>
 
-<?php
-if (isset($cat)){
-
-// Параметры для подключения
-    $host = "localhost";
-    $user = "root"; // Логин БД
-    $pass = ""; // Пароль БД
-    $db_name = "baza"; // Имя БД
-    $db_table = "category"; // Имя Таблицы БД
-
-// Подключение к базе данных
-//$link = mysqli_connect($host, $user, $pass, $db_name);
-    $mysqli = mysqli_connect($host,$user,$pass,$db_name);
-
-// Если есть ошибка соединения, выводим её и убиваем подключение
-    if ($mysqli->connect_error) {
-        die('Ошибка : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
-    }
-
-    $mysqli->set_charset('utf8');
-
-    $result = $mysqli->query("INSERT INTO category(category) VALUES ('$cat')");
-
-    if ($result == true) echo "Информация занесена в базу данных";
-    else echo "Информация не занесена в базу данных";
-    echo "</br>";
-    $sql = $mysqli->query("SELECT name, category FROM book");
-    while ($result = mysqli_fetch_array($sql)) {
-        echo "{$result['категория']}: {$result['name']} </br>";
-    }
-}
-?>
 </body>
 </html>
