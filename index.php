@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" id="theme-style"  href="C:\OpenServer\domains\example-app\public\test\style.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Библиотека</title>
 </head>
 
@@ -85,7 +85,7 @@ WHERE ((category.count)=1);");
 </form>
 
 <form>
-    <button type="button" class="btn btn-outline-warning" onclick="openForm()">Добавить/Удалить</button>
+    <button type="button" class="btn btn-cta-secondary" target="_blank" onclick="openForm()">Добавить/Удалить</button>
 </form>
 
 <div class="modal-content rounded-5 shadow" style="display: none; position: fixed">
