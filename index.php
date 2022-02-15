@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" id="theme-style"  href="C:\OpenServer\domains\example-app\public\test\style.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <title>Библиотека</title>
 </head>
 
-<body>
+<body  data-spy="scroll">
 <?php
     $host = "localhost";
     $user = "root";
@@ -24,38 +24,32 @@
     $mysqli->set_charset('utf8');
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid" >
-        <a class="navbar-brand" href="#">Библиотека "READER"</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<header id="header" class="header">
+    <div class="container">
+        <nav id="main-nav" class="main-nav navbar-right" role="navigation">
+            <div class="navbar-collapse collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item"><a class="scrollto" href="#about">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
 
-        <div class="collapse navbar-collapse" id="navbarColor03">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Home
-                        <span class="visually-hidden">(current)</span>
-                    </a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="butt">Поиск</button>
-            </form>
+<section id="promo" class="promo section offset-header">
+    <div class="container text-center">
+        <h2 class="title">Библиотека</h2>
+        <div class="btns" id="butt" align="center">
+            <input  type="button" class="btn btn-cta-secondary" target="_blank" value="1-категория" name="cat[]" onclick="opForm()">
+            <input  type="button" class="btn btn-cta-primary" target="_blank" value="2-категория" name="cat[]" onclick="opForm()">
+            <input  type="button" class="btn btn-cta-secondary" target="_blank" value="3-категория" name="cat[]" onclick="opForm()">
+            <input  type="button" class="btn btn-cta-primary" target="_blank" value="4-категория" name="cat[]" onclick="opForm()">
+            <input  type="button" class="btn btn-cta-secondary"  target="_blank" value="5-категория" name="cat[]" onclick="opForm()">
         </div>
+        <ul class="meta list-inline">
+        </ul>
     </div>
-</nav>
-
-<form>
-    <div align="center" id="butt">
-        <input  type="button" class="btn btn-outline-warning" value="1-категория" name="cat[]" onclick="opForm()">
-        <input type="button" class="btn btn-outline-success" value="2-категория" name="cat[]" onclick="opForm()">
-        <input type="button" class="btn btn-outline-info" value="3-категория" name="cat[]" onclick="opForm()">
-        <input type="button" class="btn btn-outline-success" value="4-категория" name="cat[]" onclick="opForm()">
-        <input  type="button" class="btn btn-outline-warning" value="5-категория" name="cat[]" onclick="opForm()">
-    </div>
-</form>
+</section>
 
 <form id="Form">
     <script>
