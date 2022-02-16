@@ -36,6 +36,7 @@
 <script>
     function catForm()
     {
+        event.preventDefault();
         //мнда категорияны алп оны $cat ка жазатн код керек
     }
 </script>
@@ -72,6 +73,7 @@
         <?php $cat=2;?>
         <h2>Список книг <?php echo "$cat" ?> категории:</h2>
         <div>
+            <button id="add" class="btn btn-cta-secondary" onclick="openAddForm()">Добавить</button>
             <h4 style="color: #122b40; float: right=30%; padding-left: 190px" >Количество книг:
                 <?php
                 $sqlCount=$mysqli->query("SELECT category.category, Count(name) AS Cname
@@ -79,7 +81,7 @@ FROM category INNER JOIN book ON category.count = book.category
 GROUP BY category.category
 HAVING ((category.category)=$cat)");
                 while ($resul = mysqli_fetch_array($sqlCount))
-                    echo "{$resul['Cname']} </br>";
+                    echo "{$resul['Cname']}</br>";
                 ?>
             </h4>
             <h3>
@@ -88,30 +90,25 @@ HAVING ((category.category)=$cat)");
 FROM category INNER JOIN book ON category.count = book.category
 WHERE ((category.count)=$cat);");
                 while ($result = mysqli_fetch_array($sql))
-                    echo "{$result['name']} </br>";
+                    echo "<div content id='block'>{$result['name']}
+<button id='dell' class='change' onclick='openDeleteForm()'>Изменить</button>
+<button id='dell' class='delete' onclick='openDeleteForm()'>Удалить</button></div> </br>";
                 ?>
             </h3>
         </div>
     </div>
 </form>
 
-<form align="center">
-    <button class="btn btn-cta-secondary" onclick="openAddForm()">Добавить</button>
-    <button class="btn btn-cta-secondary" onclick="openDelForm()">Удалить</button>
-</form>
 
 <script>
 function openAddForm() {
     event.preventDefault();
     document.getElementById('addForm').style.display ="block";
-}
-
-function openDelForm() {
-    document.getElementById('delForm').style.display ="block";
+    document.getElementById('deleteForm').style.display = "none";
 }
 </script>
 
-<form id="addForm" style="display: none;" align="center">
+<form id="addForm" style="display: none;">
     <h3 class="fw-bold mb-0">Добавлить данные</h3><br>
     <div>
         <label for="bookInput"> Называние книги:</label>
@@ -122,10 +119,12 @@ function openDelForm() {
         <input type="text" id="catInput">
     </div><br>
         <button type="submit " class="btn btn-cta-secondary" onclick="reAddForm()">Добавить</button>
+    <button  class="btn btn-cta-secondary" onclick="closeAddForm()">Закрыть</button>
 </form>
 
 <script>
     function reAddForm() {
+        event.preventDefault();
         let book = document.getElementById('bookInput').value;
         let cat=document.getElementById('catInput').value;
         document.getElementById('addForm').style.display = "block";
@@ -141,21 +140,9 @@ function openDelForm() {
     }
 </script>
 
-<form id="delForm" style="display: none;" align="center">
-    <h3 class="fw-bold mb-0">Удалить данные</h3><br>
-    <div>
-        <label for="bookInput"> Называние книги:</label>
-        <input type="checkbox" id="bookDelete">
-    </div><br>
-    <div>
-        <label for="catInput">Категория книги:</label>
-        <input type="checkbox" id="catDelete">
-    </div><br>
-    <button type="submit " class="btn btn-cta-secondary" onclick="openDeleteForm()">Удалить</button>
-</form>
-
 <script>
     function openDeleteForm() {
+        event.preventDefault();
         document.getElementById('deleteForm').style.display = "block";
     }
 </script>
@@ -171,6 +158,7 @@ function openDelForm() {
 
 <script>
     function closeAddForm() {
+        event.preventDefault();
         //добавить те х деген кнопка кою керек
         document.getElementById('addForm').style.display = "none";
         document.getElementById('bookInput').value = "";
@@ -178,29 +166,47 @@ function openDelForm() {
     }
 
     function closeDelForm() {
+        event.preventDefault();
         //удалить ке х деген кнопка кою керек
-        document.getElementById('delForm').style.display = "none";
         document.getElementById('bookDelete').value = "";
         document.getElementById('catDelete').value = "";
     }
 
     function deleteForm() {
+        event.preventDefault();
         document.getElementById('deleteForm').style.display = "none";
 
         /*$sql = $mysqli->query("DELETE FROM `book` WHERE `book`.`count` = 10");
         if ($add == true) echo "Информация удалена из базы данных";
         else echo "Информация не удалена из базы данных";
         echo "</br>";*/
-
-        document.getElementById('bookDelete').value = "";
-        document.getElementById('catDelete').value = "";
     }
 
     function cancelForm() {
+        event.preventDefault();
         document.getElementById('deleteForm').style.display = "none";
+    }
+</script>
 
-        document.getElementById('bookDelete').value = "";
-        document.getElementById('catDelete').value = "";
+<script>
+    let modal = document.getElementById('addForm');
+
+    let btn = document.getElementById("add");
+
+    let span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
 </script>
 

@@ -18,7 +18,7 @@ a:hover {
 a.btn-cta-primary,
 .btn-cta-primary {
     background: #074f66;
-    border: 1px solid #074f66;
+    border: 2px solid #074f66;
     color: #fff;
     font-weight: 600;
     text-transform: uppercase;
@@ -26,7 +26,7 @@ a.btn-cta-primary,
 a.btn-cta-secondary,
 .btn-cta-secondary {
     background: #eebf3f;
-    border: 1px solid #eebf3f;
+    border: 2px solid #eebf3f;
     color: #fff;
     font-weight: 600;
     text-transform: uppercase;
@@ -85,10 +85,29 @@ a.btn-cta-secondary,
 .promo .meta a {
     color: #0a7396;
 }
-#sss {
-    float: left;
-    width: 300px;
-    border: 2px solid black;
-    border-radius: 30px;
+#block {
+    width: 90%;
+    align: "center";
+    height: 50px;
+    border: 2px solid #074f66;
+    border-radius: 10px;
+}
+.delete {
+    font-size: 15px;
+    background: #c9302c;
+    border: 2px solid #c9302c;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 80;
+    text-transform: uppercase;
 }
 
+.change {
+    font-size: 15px;
+    background: #398439;
+    border: 2px solid #398439;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 80;
+    text-transform: uppercase;
+}
