@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Библиотека</title>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
         <nav id="main-nav" class="main-nav navbar-right" role="navigation">
             <div class="navbar-collapse collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item"><a class="scroll" href="#about">About</a></li>
+                    <li class="nav-item"><a>About</a></li>
                 </ul>
             </div>
         </nav>
@@ -23,15 +23,22 @@
 <section id="promo" class="promo section offset-header">
     <div class="container text-center">
         <h2 class="title">Библиотека</h2>
-        <div class="btn" id="butt" align="center">
-            <input  type="button" class="btn btn-cta-secondary" target="_blank" value="1-категория" name="cat[]" onclick="opForm()">
-            <input  type="button" class="btn btn-cta-primary" target="_blank" value="2-категория" name="cat[]" onclick="opForm()">
-            <input  type="button" class="btn btn-cta-secondary" target="_blank" value="3-категория" name="cat[]" onclick="opForm()">
-            <input  type="button" class="btn btn-cta-primary" target="_blank" value="4-категория" name="cat[]" onclick="opForm()">
-            <input  type="button" class="btn btn-cta-secondary"  target="_blank" value="5-категория" name="cat[]" onclick="opForm()">
-        </div>
+        <div class="btn" id="butt">
+        <button class="btn btn-cta-secondary" value=1 name="cat[]" onclick="catForm()">1-категория</button>
+        <button class="btn btn-cta-primary" value="2" name="cat[]" onclick="catForm()">2-категория</button>
+        <button class="btn btn-cta-secondary" value="3" name="cat[]" onclick="catForm()">3-категория</button>
+        <button class="btn btn-cta-primary" value="4" name="cat[]" onclick="catForm()">4-категория</button>
+        <button class="btn btn-cta-secondary"  value="5" name="cat[]" onclick="catForm()">5-категория</button>
+    </div>
     </div>
 </section>
+
+<script>
+    function catForm()
+    {
+        //мнда категорияны алп оны $cat ка жазатн код керек
+    }
+</script>
 
 <?php
     $host = "localhost";
@@ -49,7 +56,7 @@
     $mysqli->set_charset('utf8');
 ?>
 
-<form id="Form">
+<form id="catForm" align="center">
     <script>
         let ind;
         function ins(e){
@@ -61,109 +68,141 @@
             alert(ind);
         }
     </script>
-    <div >
-        <h2>Список книг 1 категории</h2>
+    <div>
+        <?php $cat=2;?>
+        <h2>Список книг <?php echo "$cat" ?> категории:</h2>
         <div>
-            <h4>Количество книг:
-            <?php
-            $sqlCount=$mysqli->query("SELECT category.category, Count(name) AS Cname
+            <h4 style="color: #122b40; float: right=30%; padding-left: 190px" >Количество книг:
+                <?php
+                $sqlCount=$mysqli->query("SELECT category.category, Count(name) AS Cname
 FROM category INNER JOIN book ON category.count = book.category
 GROUP BY category.category
-HAVING ((category.category)=1)");
-            while ($resul = mysqli_fetch_array($sqlCount))
-            echo "{$resul['Cname']} </br>";
-            $sql = $mysqli->query("SELECT category.count, book.name
-FROM category INNER JOIN book ON category.count = book.category
-WHERE ((category.count)=1);");
-            while ($result = mysqli_fetch_array($sql))
-                echo "{$result['name']} </br>";
-            ?>
+HAVING ((category.category)=$cat)");
+                while ($resul = mysqli_fetch_array($sqlCount))
+                    echo "{$resul['Cname']} </br>";
+                ?>
             </h4>
+            <h3>
+                <?php
+                $sql = $mysqli->query("SELECT category.count, book.name
+FROM category INNER JOIN book ON category.count = book.category
+WHERE ((category.count)=$cat);");
+                while ($result = mysqli_fetch_array($sql))
+                    echo "{$result['name']} </br>";
+                ?>
+            </h3>
         </div>
     </div>
 </form>
 
-<form>
-    <button type="button" class="btn btn-cta-secondary" target="_blank" onclick="openForm()">Добавить/Удалить</button>
+<form align="center">
+    <button class="btn btn-cta-secondary" onclick="openAddForm()">Добавить</button>
+    <button class="btn btn-cta-secondary" onclick="openDelForm()">Удалить</button>
 </form>
 
-<div  style=" position: fixed">
-    <div "
-    <form id="mForm">
-        <h3 class="fw-bold mb-0">Добавление/Удаление данных</h3>
-        <div >
-                <div>
-                    <input type="text" id="bookInput"><label for="bookInput"> Называние книги</label>
-                </div>
-                <div>
-                    <input type="text" id="catInput"><label for="catInput">Категория книги</label>
-                </div>
-                <button type="button" class="btn btn-cta-secondary"  onclick="reForm()">Добавить</button>
-                <button type="button" class="btn btn-cta-secondary"  onclick="openedForm()">Удалить</button>
-    </div>
+<script>
+function openAddForm() {
+    event.preventDefault();
+    document.getElementById('addForm').style.display ="block";
+}
 
-    <script>
-        function opForm() {
-            document.getElementById("Form").style.display = "block";
-        }
+function openDelForm() {
+    document.getElementById('delForm').style.display ="block";
+}
+</script>
 
-        function reForm() {
-            let book = document.getElementById('bookInput').value;
-            let cat=document.getElementById('catInput').value;
-            document.getElementById("mForm").style.display = "block";
-            <?php
-            $add = $mysqli->query("INSERT INTO `book` (`count`, `name`, `category`) VALUES (`10`,`вино из одуванчиков`,`1`)");
-
-            if ($add == true) echo "Информация занесена в базу данных";
-            else echo "Информация не занесена в базу данных";
-            echo "</br>";
-            ?>
-            document.getElementById('bookInput').value = "";
-            document.getElementById('catInput').value = "";
-        }
-
-        function openForm() {
-            document.getElementById("mForm").style.display = "block";
-        }
-
-        function closeForm() {
-            document.getElementById("mForm").style.display = "none";
-            document.getElementById('bookInput').value = "";
-            document.getElementById('catInput').value = "";
-        }
-
-        function openedForm() {
-            document.getElementById("myForm").style.display = "block";
-        }
-
-        function closedForm() {
-            document.getElementById("myForm").style.display = "none";
-            <?php
-            $sql = $mysqli->query("DELETE FROM `book` WHERE `book`.`count` = 10");
-            if ($add == true) echo "Информация удалена из базы данных";
-            else echo "Информация не удалена из базы данных";
-            echo "</br>";
-            ?>
-            document.getElementById('bookInput').value = "";
-            document.getElementById('catInput').value = "";
-            document.getElementById('bookInput').value = "";
-            document.getElementById('catInput').value = "";
-                ?>
-        }
-    </script>
-
+<form id="addForm" style="display: none;" align="center">
+    <h3 class="fw-bold mb-0">Добавлить данные</h3><br>
+    <div>
+        <label for="bookInput"> Называние книги:</label>
+        <input type="text" id="bookInput">
+    </div><br>
+    <div>
+        <label for="catInput">Категория книги:</label>
+        <input type="text" id="catInput">
+    </div><br>
+        <button type="submit " class="btn btn-cta-secondary" onclick="reAddForm()">Добавить</button>
 </form>
 
-<div id="myForm" style=" position: fixed">
-    <di>
+<script>
+    function reAddForm() {
+        let book = document.getElementById('bookInput').value;
+        let cat=document.getElementById('catInput').value;
+        document.getElementById('addForm').style.display = "block";
+
+        /*$add = $mysqli->query("INSERT INTO `book` (`count`, `name`, `category`) VALUES (`тут count болу керек`,`$book`,`$cat`)");
+
+        if ($add == true) echo "Информация занесена в базу данных";
+        else echo "Информация не занесена в базу данных";
+        echo "</br>";
+        */
+        document.getElementById('bookInput').value = "";
+        document.getElementById('catInput').value = "";
+    }
+</script>
+
+<form id="delForm" style="display: none;" align="center">
+    <h3 class="fw-bold mb-0">Удалить данные</h3><br>
+    <div>
+        <label for="bookInput"> Называние книги:</label>
+        <input type="checkbox" id="bookDelete">
+    </div><br>
+    <div>
+        <label for="catInput">Категория книги:</label>
+        <input type="checkbox" id="catDelete">
+    </div><br>
+    <button type="submit " class="btn btn-cta-secondary" onclick="openDeleteForm()">Удалить</button>
+</form>
+
+<script>
+    function openDeleteForm() {
+        document.getElementById('deleteForm').style.display = "block";
+    }
+</script>
+
+<form align="center" id="deleteForm" style="display: none;">
         <h3>Удаление</h3>
         <p>Вы уверены, что хотите удалить?</p>
-    </di>
     <div>
-        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right" onclick="closedForm()"><strong><h4>Удалить</h4></strong></button>
-        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal" onclick="closedForm()"><h4>Отмена</h4></button>
+        <button type="submit " class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right" onclick="deleteForm()">Удалить</button>
+        <button type="submit " class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" onclick="cancelForm()">Отмена</button>
     </div>
-</div>
+</form>
+
+<script>
+    function closeAddForm() {
+        //добавить те х деген кнопка кою керек
+        document.getElementById('addForm').style.display = "none";
+        document.getElementById('bookInput').value = "";
+        document.getElementById('catInput').value = "";
+    }
+
+    function closeDelForm() {
+        //удалить ке х деген кнопка кою керек
+        document.getElementById('delForm').style.display = "none";
+        document.getElementById('bookDelete').value = "";
+        document.getElementById('catDelete').value = "";
+    }
+
+    function deleteForm() {
+        document.getElementById('deleteForm').style.display = "none";
+
+        /*$sql = $mysqli->query("DELETE FROM `book` WHERE `book`.`count` = 10");
+        if ($add == true) echo "Информация удалена из базы данных";
+        else echo "Информация не удалена из базы данных";
+        echo "</br>";*/
+
+        document.getElementById('bookDelete').value = "";
+        document.getElementById('catDelete').value = "";
+    }
+
+    function cancelForm() {
+        document.getElementById('deleteForm').style.display = "none";
+
+        document.getElementById('bookDelete').value = "";
+        document.getElementById('catDelete').value = "";
+    }
+</script>
 
 </body>
 </html>
