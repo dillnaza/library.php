@@ -120,7 +120,8 @@ function changeForm() {
         <input type="text" id="bookInput">
     </div><br>
     <div>
-        <label for="catInput">Категория книги: <?php $cat?></label>
+        <label for="catInput">Категория книги:</label>
+        <input type="text" id="catInput">
     </div><br>
     <button type="submit " class="btn btn-cta-secondary" onclick="reAddForm()">Добавить</button>
     <button  class="btn btn-cta-secondary" onclick="closeAddForm()">Закрыть</button>
@@ -151,15 +152,15 @@ function changeForm() {
     }
 </script>
 
-<form align="center" id="changeForm" style="display: none;">
+<form align="center" id="changeForm" style="display: none;"  class="hystmodal">
     <h3>Изменение</h3>
     <div>
         <label for="bookInput"> Называние книги:</label>
         <input type="text" id="book1Input">
     </div><br>
     <div>
-        <label for="catInput">Категория книги:</label>
-        <input type="text" id="cat1Input">
+
+        <label for="catInput">Категория книги: <?php $cat?></label>
     </div><br>
     <button type="submit " class="btn btn-cta-secondary" onclick="reChangeForm()">Изменить</button>
     <button  class="btn btn-cta-secondary" onclick="closeChangeForm()">Закрыть</button>
