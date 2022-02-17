@@ -73,7 +73,7 @@
         <?php $cat=2;?>
         <h2>Список книг <?php echo "$cat" ?> категории:</h2>
         <div>
-            <button id="add" class="btn btn-cta-secondary" onclick="openAddForm()">Добавить</button>
+            <button id="add" class="btn btn-cta-secondary" onclick="openAddForm()">Добавить новую книгу</button>
             <h4 style="color: #122b40; float: right=30%; padding-left: 190px" >Количество книг:
                 <?php
                 $sqlCount=$mysqli->query("SELECT category.category, Count(name) AS Cname
@@ -91,8 +91,8 @@ FROM category INNER JOIN book ON category.count = book.category
 WHERE ((category.count)=$cat);");
                 while ($result = mysqli_fetch_array($sql))
                     echo "<div content id='block'>{$result['name']}
-<img id='change' class='image' src='/css/noun-edit-1644623.png' onclick='changeAddForm()'alt='Изменить'>
-<img id='dell' class='image' src='/css/noun-delete-4602521.png' onclick='openDeleteForm()' alt='Удалить'>
+<img id='change' height='30' width='30' src='/css/noun-edit-1644623.png' onclick='changeForm()' alt='Изменить'>
+<img id='dell' height='30' width='30' src='/css/noun-delete-4602521.png' onclick='openDeleteForm()' alt='Удалить'>
 </div> </br>";
                 ?>
             </h3>
@@ -104,12 +104,12 @@ WHERE ((category.count)=$cat);");
 <script>
 function openAddForm() {
     event.preventDefault();
-    document.getElementById('deleteForm').style.display = "none";
+    document.getElementById('addForm').style.display = "block";
 }
 
-function changeAddForm() {
+function changeForm() {
     event.preventDefault();
-    document.getElementById('changeForm').style.display = "none";
+    document.getElementById('changeForm').style.display = "block";
 }
 </script>
 
@@ -120,10 +120,9 @@ function changeAddForm() {
         <input type="text" id="bookInput">
     </div><br>
     <div>
-        <label for="catInput">Категория книги:</label>
-        <input type="text" id="catInput">
+        <label for="catInput">Категория книги: <?php $cat?></label>
     </div><br>
-        <button type="submit " class="btn btn-cta-secondary" onclick="reAddForm()">Добавить</button>
+    <button type="submit " class="btn btn-cta-secondary" onclick="reAddForm()">Добавить</button>
     <button  class="btn btn-cta-secondary" onclick="closeAddForm()">Закрыть</button>
 </form>
 
@@ -143,45 +142,59 @@ function changeAddForm() {
         document.getElementById('bookInput').value = "";
         document.getElementById('catInput').value = "";
     }
-</script>
 
-<script>
-    function openDeleteForm() {
+    function closeAddForm() {
         event.preventDefault();
-        document.getElementById('deleteForm').style.display = "block";
+        document.getElementById('addForm').style.display = "none";
+        document.getElementById('bookInput').value = "";
+        document.getElementById('catInput').value = "";
     }
 </script>
-
-<form align="center" id="deleteForm" style="display: none;">
-        <h3>Удаление</h3>
-        <p>Вы уверены, что хотите удалить?</p>
-    <div>
-        <button type="submit " class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right" onclick="deleteForm()">Удалить</button>
-        <button type="submit " class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" onclick="cancelForm()">Отмена</button>
-    </div>
-</form>
 
 <form align="center" id="changeForm" style="display: none;">
     <h3>Изменение</h3>
     <div>
         <label for="bookInput"> Называние книги:</label>
-        <input type="text" id="bookInput">
+        <input type="text" id="book1Input">
     </div><br>
     <div>
         <label for="catInput">Категория книги:</label>
-        <input type="text" id="catInput">
+        <input type="text" id="cat1Input">
     </div><br>
-    <button type="submit " class="btn btn-cta-secondary" onclick="reAddForm()">Изменить</button>
-    <button  class="btn btn-cta-secondary" onclick="closeAddForm()">Закрыть</button>
+    <button type="submit " class="btn btn-cta-secondary" onclick="reChangeForm()">Изменить</button>
+    <button  class="btn btn-cta-secondary" onclick="closeChangeForm()">Закрыть</button>
 </form>
 
 <script>
-    function closeAddForm() {
+    function closeChangeForm() {
         event.preventDefault();
-        //добавить те х деген кнопка кою керек
-        document.getElementById('addForm').style.display = "none";
-        document.getElementById('bookInput').value = "";
-        document.getElementById('catInput').value = "";
+        document.getElementById('changeForm').style.display = "none";
+        document.getElementById('book1Input').value = "";
+        document.getElementById('cat1Input').value = "";
+    }
+
+    function reChangeForm() {
+        event.preventDefault();
+        //sql на ихменение
+        document.getElementById('changeForm').style.display = "none";
+        document.getElementById('book1Input').value = "";
+        document.getElementById('cat1Input').value = "";
+    }
+</script>
+
+<form align="center" id="deleteForm" style="display: none;">
+    <h3>Удаление</h3>
+    <p>Вы уверены, что хотите удалить?</p>
+    <div>
+        <button type="submit " class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right" onclick="deleteForm()">Удалить</button>
+        <button type="button " class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" onclick="cancelForm()">Отмена</button>
+    </div>
+</form>
+
+<script>
+    function openDeleteForm() {
+        event.preventDefault();
+        document.getElementById('deleteForm').style.display = "block";
     }
 
     function closeDelForm() {
@@ -228,6 +241,5 @@ function changeAddForm() {
         }
     }
 </script>
-/*Delete by Ilham Fitrotul Hayat from <a href="https://thenounproject.com">NounProject.com</a>*/
 </body>
 </html>
