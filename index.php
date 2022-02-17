@@ -38,7 +38,8 @@
     {
         event.preventDefault();
         //мнда категорияны алп оны $cat ка жазатн код керек
-        /*<?php $_GET(cat[$cat=2])?>*/
+        // php $_GET(cat[$cat=2])?
+
     }
 </script>
 
@@ -57,7 +58,7 @@
         }
     </script>
     <div>
-        <h2>Список книг <?php echo $cat?> категории:</h2>
+        <h2>Список книг <?php echo $cat=2?> категории:</h2>
         <div>
             <button id="add" class="btn btn-cta-secondary" onclick="openAddForm()">Добавить новую книгу</button>
             <h4 style="color: #122b40; padding-left: 68%" >Количество книг:
