@@ -42,7 +42,7 @@ a.btn-cta-secondary,
     color: #fff;
 }
 .header .main-nav button {
-    background: #074f66;
+    background: #fff;
     color: #fff !important;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -102,26 +102,17 @@ a.btn-cta-secondary,
 .hystmodal {
     position: fixed;
     top: 30%;
-    bottom: 40%;
+    bottom: 35%;
     right: 30%;
     left: 30%;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
     display: flex;
-    flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
-    z-index: 99;
     padding:30px 0;
     background: #fff;
+    border: 2px solid #074f66;
+    border-radius: 7px;
+    width: 500px;
     max-width: 100%;
-    flex-shrink: 0;
-    flex-grow: 0;
-    min-height: 100%;
-    flex-flow: column nowrap;
-    margin: 50px 0;
-    width: 600px;
-    transition: transform 0.2s ease 0s, opacity 0.2s ease 0s;
-    transform: scale(0.9);
-    opacity: 0;
+
 }
