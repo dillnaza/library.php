@@ -97,5 +97,6 @@ a.btn-cta-secondary,
 .images {
     height: 30px;
     width: 30px;
-
+    text-align: center;
+    line-height: 50px
 }
