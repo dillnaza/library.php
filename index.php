@@ -113,7 +113,7 @@ function changeForm() {
 }
 </script>
 
-<form id="addForm" style="display: none;">
+<form align="center" id="addForm" style="display: none;"  class="hystmodaladd">
     <h3 class="fw-bold mb-0">Добавлить данные</h3><br>
     <div>
         <label for="bookInput"> Называние книги:</label>
@@ -152,7 +152,7 @@ function changeForm() {
     }
 </script>
 
-<form align="center" id="changeForm" style="display: none;"  class="hystmodal">
+<form align="center" id="changeForm" style="display: none;"  class="hystmodalchan">
     <h3>Изменение</h3>
     <div>
         <label for="bookInput"> Называние книги:</label>
@@ -183,7 +183,7 @@ function changeForm() {
     }
 </script>
 
-<form align="center" id="deleteForm" style="display: none;">
+<form align="center" id="deleteForm" style="display: none;"  class="hystmodaldel">
     <h3>Удаление</h3>
     <p>Вы уверены, что хотите удалить?</p>
     <div>
@@ -242,5 +242,6 @@ function changeForm() {
         }
     }
 </script>
+
 </body>
 </html>
