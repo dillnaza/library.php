@@ -74,7 +74,7 @@
         <h2>Список книг <?php echo "$cat" ?> категории:</h2>
         <div>
             <button id="add" class="btn btn-cta-secondary" onclick="openAddForm()">Добавить новую книгу</button>
-            <h4 style="color: #122b40; float: right=30%; padding-left: 190px" >Количество книг:
+            <h4 style="color: #122b40; padding-left: 70%" >Количество книг:
                 <?php
                 $sqlCount=$mysqli->query("SELECT category.category, Count(name) AS Cname
 FROM category INNER JOIN book ON category.count = book.category
