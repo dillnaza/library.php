@@ -91,8 +91,9 @@ FROM category INNER JOIN book ON category.count = book.category
 WHERE ((category.count)=$cat);");
                 while ($result = mysqli_fetch_array($sql))
                     echo "<div content id='block'>{$result['name']}
-<button id='dell' class='change' onclick='openDeleteForm()'>Изменить</button>
-<button id='dell' class='delete' onclick='openDeleteForm()'>Удалить</button></div> </br>";
+<img id='change' class='image' src='/css/noun-edit-1644623.png' onclick='changeAddForm()'alt='Изменить'>
+<img id='dell' class='image' src='/css/noun-delete-4602521.png' onclick='openDeleteForm()' alt='Удалить'>
+</div> </br>";
                 ?>
             </h3>
         </div>
@@ -103,8 +104,12 @@ WHERE ((category.count)=$cat);");
 <script>
 function openAddForm() {
     event.preventDefault();
-    document.getElementById('addForm').style.display ="block";
     document.getElementById('deleteForm').style.display = "none";
+}
+
+function changeAddForm() {
+    event.preventDefault();
+    document.getElementById('changeForm').style.display = "none";
 }
 </script>
 
@@ -154,6 +159,20 @@ function openAddForm() {
         <button type="submit " class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right" onclick="deleteForm()">Удалить</button>
         <button type="submit " class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" onclick="cancelForm()">Отмена</button>
     </div>
+</form>
+
+<form align="center" id="changeForm" style="display: none;">
+    <h3>Изменение</h3>
+    <div>
+        <label for="bookInput"> Называние книги:</label>
+        <input type="text" id="bookInput">
+    </div><br>
+    <div>
+        <label for="catInput">Категория книги:</label>
+        <input type="text" id="catInput">
+    </div><br>
+    <button type="submit " class="btn btn-cta-secondary" onclick="reAddForm()">Изменить</button>
+    <button  class="btn btn-cta-secondary" onclick="closeAddForm()">Закрыть</button>
 </form>
 
 <script>
@@ -209,6 +228,6 @@ function openAddForm() {
         }
     }
 </script>
-
+/*Delete by Ilham Fitrotul Hayat from <a href="https://thenounproject.com">NounProject.com</a>*/
 </body>
 </html>

@@ -69,8 +69,7 @@ a.btn-cta-secondary,
 .promo .intro {
     font-size: 28px;
     max-width: 680px;
-    margin: 0 auto;
-    margin-bottom: 30px;
+    margin: 0 auto 30px;
 }
 .promo .btn {
     margin-right: 15px;
@@ -92,22 +91,7 @@ a.btn-cta-secondary,
     border: 2px solid #074f66;
     border-radius: 10px;
 }
-.delete {
-    font-size: 15px;
-    background: #c9302c;
-    border: 2px solid #c9302c;
-    border-radius: 5px;
-    color: #fff;
-    font-weight: 80;
-    text-transform: uppercase;
-}
-
-.change {
-    font-size: 15px;
-    background: #398439;
-    border: 2px solid #398439;
-    border-radius: 5px;
-    color: #fff;
-    font-weight: 80;
-    text-transform: uppercase;
+.image {
+    height: 30px;
+    width: 30px;
 }
