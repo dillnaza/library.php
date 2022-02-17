@@ -20,7 +20,7 @@
     </div>
 </header>
 
-<section id="promo" class="promo section offset-header">
+<form id="promo" class="promo section offset-header" method="get">
     <div class="container text-center">
         <h2 class="title">Библиотека</h2>
         <div class="btn" id="butt">
@@ -31,7 +31,7 @@
         <button class="btn btn-cta-secondary"  value="5" name="cat[]" onclick="catForm()">5-категория</button>
     </div>
     </div>
-</section>
+</form>
 
 <script>
     function catForm()
@@ -56,8 +56,7 @@
         }
     </script>
     <div>
-        <?php $cat=2;?>
-        <h2>Список книг <?php echo "$cat" ?> категории:</h2>
+        <h2>Список книг <?php echo $cat=2?> категории:</h2>
         <div>
             <button id="add" class="btn btn-cta-secondary" onclick="openAddForm()">Добавить новую книгу</button>
             <h4 style="color: #122b40; padding-left: 68%" >Количество книг:
@@ -83,27 +82,27 @@ function changeForm() {
 }
 </script>
 
-<form align="center" id="addForm" style="display: none;"  class="hystmodaladd">
-    <h3 class="fw-bold mb-0">Добавлить данные</h3><br>
+<form align="center" id="addForm" style="display: none"  class="hystmodaladd" method="post">
+    <h3 class="fw-bold mb-0">Добавить данные</h3><br>
     <div>
         <label for="bookInput"> Называние книги:</label>
-        <input type="text" id="bookInput">
+        <input type="text" name="bookInput">
     </div><br>
     <div>
         <label for="catInput">Категория книги:</label>
-        <input type="text" id="catInput">
+        <input type="text" name="catInput">
     </div><br>
-    <button type="submit " class="btn btn-cta-secondary" onclick="reAddForm()">Добавить</button>
-    <button  class="btn btn-cta-secondary" onclick="closeAddForm()">Закрыть</button>
+    <button class="btn btn-cta-secondary" onclick="reAddForm()">Добавить</button>
+    <button class="btn btn-cta-secondary" onclick="closeAddForm()">Закрыть</button>
 </form>
 
 <script>
     function reAddForm() {
         event.preventDefault();
-        let book = document.getElementById('bookInput').value;
-        let cat=document.getElementById('catInput').value;
-        document.getElementById('addForm').style.display = "none";
+        /*let book = document.getElementById('bookInput').value;
+        let cat=document.getElementById('catInput').value;*/
         <?php include 'add.php';?>
+        document.getElementById('addForm').style.display = "none";
         document.getElementById('bookInput').value = "";
         document.getElementById('catInput').value = "";
     }
@@ -152,7 +151,7 @@ function changeForm() {
     <p>Вы уверены, что хотите удалить?</p>
     <div>
         <button type="submit " class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right" onclick="deleteForm()">Удалить</button>
-        <button type="button " class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" onclick="cancelForm()">Отмена</button>
+        <button  class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" onclick="cancelForm()">Отмена</button>
     </div>
 </form>
 
