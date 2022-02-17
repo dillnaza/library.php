@@ -41,21 +41,7 @@
     }
 </script>
 
-<?php
-    $host = "localhost";
-    $user = "root";
-    $pass = "";
-    $db_name = "baza";
-    $db_table = "category";
-
-    $mysqli = mysqli_connect($host,$user,$pass,$db_name);
-
-    if ($mysqli->connect_error) {
-        die('Ошибка : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
-    }
-
-    $mysqli->set_charset('utf8');
-?>
+<?php include 'connect.php'?>
 
 <form id="catForm" align="center">
     <script>
@@ -75,26 +61,10 @@
         <div>
             <button id="add" class="btn btn-cta-secondary" onclick="openAddForm()">Добавить новую книгу</button>
             <h4 style="color: #122b40; padding-left: 68%" >Количество книг:
-                <?php
-                $sqlCount=$mysqli->query("SELECT category.category, Count(name) AS Cname
-FROM category INNER JOIN book ON category.count = book.category
-GROUP BY category.category
-HAVING ((category.category)=$cat)");
-                while ($resul = mysqli_fetch_array($sqlCount))
-                    echo "{$resul['Cname']}</br>";
-                ?>
+                <?php include 'category.php'?>
             </h4>
             <h3>
-                <?php
-                $sql = $mysqli->query("SELECT category.count, book.name
-FROM category INNER JOIN book ON category.count = book.category
-WHERE ((category.count)=$cat);");
-                while ($result = mysqli_fetch_array($sql))
-                    echo "<div content id='block'>{$result['name']}
-<img id='dell' style='float: right;' class='images' src='/css/noun-delete-4602521.png' onclick='openDeleteForm()' alt='Удалить'>
-<img id='change' style='float: right;' class='images' src='/css/noun-edit-1644623.png' onclick='changeForm()' alt='Изменить'>
-</div> </br>";
-                ?>
+                <?php include 'category 2.php'?>
             </h3>
         </div>
     </div>
@@ -132,14 +102,8 @@ function changeForm() {
         event.preventDefault();
         let book = document.getElementById('bookInput').value;
         let cat=document.getElementById('catInput').value;
-        document.getElementById('addForm').style.display = "block";
-
-        /*$add = $mysqli->query("INSERT INTO `book` (`count`, `name`, `category`) VALUES (`тут count болу керек`,`$book`,`$cat`)");
-
-        if ($add == true) echo "Информация занесена в базу данных";
-        else echo "Информация не занесена в базу данных";
-        echo "</br>";
-        */
+        document.getElementById('addForm').style.display = "none";
+        <?php include 'add.php';?>
         document.getElementById('bookInput').value = "";
         document.getElementById('catInput').value = "";
     }
@@ -208,11 +172,7 @@ function changeForm() {
     function deleteForm() {
         event.preventDefault();
         document.getElementById('deleteForm').style.display = "none";
-
-        /*$sql = $mysqli->query("DELETE FROM `book` WHERE `book`.`count` = 10");
-        if ($add == true) echo "Информация удалена из базы данных";
-        else echo "Информация не удалена из базы данных";
-        echo "</br>";*/
+        <?php ?>
     }
 
     function cancelForm() {

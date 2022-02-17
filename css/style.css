@@ -102,51 +102,49 @@ a.btn-cta-secondary,
 .hystmodaladd {
     position: fixed;
     top: 35%;
-    bottom: 30%;
-    right: 30%;
-    left: 30%;
+    bottom: 33%;
+    right: 35%;
+    left: 35%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding:30px 0;
+    padding:10px 0;
     background: #fff;
     border: 2px solid #074f66;
     border-radius: 7px;
-    width: 500px;
+    width: 450px;
     max-width: 100%;
 
 }
 .hystmodalchan {
     position: fixed;
     top: 35%;
-    bottom: 35%;
-    right: 30%;
-    left: 30%;
+    bottom: 37%;
+    right: 35%;
+    left: 35%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding:30px 0;
+    padding:10px 0;
     background: #fff;
     border: 2px solid #074f66;
     border-radius: 7px;
-    width: 500px;
+    width: 400px;
     max-width: 100%;
 
 }
-.hystmodalchan {
+.hystmodaldel {
     position: fixed;
-    top: 50%;
-    bottom: 35%;
-    right: 30%;
-    left: 30%;
+    top: 40%;
+    bottom: 40%;
+    right: 40%;
+    left: 40%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding:30px 0;
+    padding:10px 0;
     background: #fff;
     border: 2px solid #074f66;
     border-radius: 7px;
-    width: 500px;
-    max-width: 100%;
-
+    width: 300px;
 }
