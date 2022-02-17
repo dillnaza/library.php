@@ -74,7 +74,7 @@
         <h2>Список книг <?php echo "$cat" ?> категории:</h2>
         <div>
             <button id="add" class="btn btn-cta-secondary" onclick="openAddForm()">Добавить новую книгу</button>
-            <h4 style="color: #122b40; padding-left: 70%" >Количество книг:
+            <h4 style="color: #122b40; padding-left: 68%" >Количество книг:
                 <?php
                 $sqlCount=$mysqli->query("SELECT category.category, Count(name) AS Cname
 FROM category INNER JOIN book ON category.count = book.category
@@ -91,8 +91,8 @@ FROM category INNER JOIN book ON category.count = book.category
 WHERE ((category.count)=$cat);");
                 while ($result = mysqli_fetch_array($sql))
                     echo "<div content id='block'>{$result['name']}
-<img id='change' height='30' width='30' src='/css/noun-edit-1644623.png' onclick='changeForm()' alt='Изменить'>
-<img id='dell' height='30' width='30' src='/css/noun-delete-4602521.png' onclick='openDeleteForm()' alt='Удалить'>
+<img id='change' class='images' src='/css/noun-edit-1644623.png' onclick='changeForm()' alt='Изменить'>
+<img id='dell' class='images' src='/css/noun-delete-4602521.png' onclick='openDeleteForm()' alt='Удалить'>
 </div> </br>";
                 ?>
             </h3>

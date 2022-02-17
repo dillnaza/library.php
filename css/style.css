@@ -85,10 +85,15 @@ a.btn-cta-secondary,
     color: #0a7396;
 }
 #block {
-    width: 90%;
+    width: 80%;
     height: 50px;
     border: 2px solid #074f66;
     border-radius: 7px;
     margin-left: auto;
     margin-right: auto
+}
+.images {
+    height: 30px;
+    width: 30px;
+    padding-left: 10%
 }
