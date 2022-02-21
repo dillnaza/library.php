@@ -47,7 +47,7 @@
 
 <form id="catForm" align="center">
     <div>
-        <h2>Список книг <?php echo $cat=5?> категории:</h2>
+        <h2>Список книг <?php echo $cat=2?> категории:</h2>
         <div>
             <button id="add" class="btn btn-cta-secondary" onclick="openAddForm()">Добавить новую книгу</button>
             <h4 style="color: #122b40; padding-left: 68%" >Количество книг:
@@ -64,26 +64,38 @@
 
 
 <script>
-function openAddForm() {
+    function openAddForm() {
     event.preventDefault();
     document.getElementById('addForm').style.display = "block";
-}
-
+    }
     function changeForm() {
         event.preventDefault();
         document.getElementById('changeForm').style.display = "block";
     }
+
+    function openDeleteForm() {
+        event.preventDefault();
+        document.getElementById('deleteForm').style.display = "block";
+    }
+
+    function favorite() {
+        <img id="fav" style="float: right;" class="images" src="/css/noun-star-1058637.png" onclick="unfavorite()" alt="Избранное">
+    }
+
+    function unfavorite() {
+        <img id='fav' style='float: right;' class='images' src='/css/noun-star-1058637.png' onclick='favorite()' alt='Избранное'>
+            }
 </script>
 
 <form align="center" id="addForm" style="display: none"  class="hystmodaladd" method="post">
     <h3 class="fw-bold mb-0">Добавить данные</h3><br>
     <div>
         <label for="bookInput"> Называние книги:</label>
-        <input type="text" id="bookInput">
+        <input type="text" name="bookInput" id="bookInput">
     </div><br>
     <div>
         <label for="catInput">Категория книги:</label>
-        <input type="text" id="catInput">
+        <input type="text" name="catInput" id="catInput">
     </div><br>
     <button type="submit" class="btn btn-cta-secondary" onclick="reAddForm()">Добавить</button>
     <button class="btn btn-cta-secondary" onclick="closeAddForm()">Закрыть</button>
@@ -110,11 +122,11 @@ function openAddForm() {
     <h3>Изменение</h3>
     <div>
         <label for="bookInput"> Называние книги:</label>
-        <input type="text" name="book1Input">
+        <input type="text" name="book1Input" id="book1Input">
     </div><br>
     <div>
         <label for="catInput">Категория книги: </label>
-        <input type="text" name="сat1Input">
+        <input type="text" name="сat1Input" id="cat1Input">
     </div><br>
     <button type="submit " class="btn btn-cta-secondary" onclick="reChangeForm()">Изменить</button>
     <button  class="btn btn-cta-secondary" onclick="closeChangeForm()">Закрыть</button>
@@ -147,11 +159,6 @@ function openAddForm() {
 </form>
 
 <script>
-    function openDeleteForm() {
-        event.preventDefault();
-        document.getElementById('deleteForm').style.display = "block";
-    }
-
     function deleteForm() {
         event.preventDefault();
         <?php include 'delete.php';?>
