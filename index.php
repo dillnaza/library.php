@@ -14,6 +14,10 @@
             <div class="navbar-collapse collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li lass="title"><h2>Библиотека "GoodReader"</h2></li>
+                    <li><input name="search" type="text"><img src="/css/noun-search-4602119.png" class="images" onclick="search()"></li>
+                    <li><div class="search">
+                            <input type="text" value="Site search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Site search';}"/>
+                            </li>
                 </ul>
             </div>
         </nav>
@@ -53,7 +57,7 @@
             <button id="add" class="btn btn-cta-secondary" onclick="openAddForm()">Добавить новую книгу</button>
             </div>
             <h4 style="color: #122b40; padding-right: 65%" >
-                <img src="/css/noun-sort-1590833.png" class="images">
+                <img src="/css/noun-sort-1590833.png" class="images" onclick="sort()">
                 Количество книг:
                 <?php include 'category.php'?>
             </h4>
@@ -83,6 +87,10 @@
     }
 
     function favorite() {
+
+    }
+
+    function sort() {
 
     }
 
