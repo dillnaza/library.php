@@ -78,13 +78,6 @@
         document.getElementById('deleteForm').style.display = "block";
     }
 
-    function favorite() {
-        <img id="fav" style="float: right;" class="images" src="/css/noun-star-1058637.png" onclick="unfavorite()" alt="Избранное">
-    }
-
-    function unfavorite() {
-        <img id='fav' style='float: right;' class='images' src='/css/noun-star-1058637.png' onclick='favorite()' alt='Избранное'>
-            }
 </script>
 
 <form align="center" id="addForm" style="display: none"  class="hystmodaladd" method="post">

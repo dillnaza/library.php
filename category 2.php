@@ -7,5 +7,14 @@ while ($result = mysqli_fetch_array($sql))
 <img id='fav' style='float: right;' class='images' src='/css/noun-star-1058635.png' onclick='favorite()' alt='Избранное'>
 <img id='dell' style='float: right;' class='images' src='/css/noun-delete-4602521.png' onclick='openDeleteForm()' alt='Удалить'>
 <img id='change' style='float: right;' class='images' src='/css/noun-edit-1644623.png' onclick='changeForm()' alt='Изменить'>
-</div> </br>";
+</div> </br>"
 ?>
+<script>
+    function favorite() {
+        <img id='fav' style='float: right;' class='images' src='/css/noun-star-1058635.png' onclick='unfavorite()' alt='Избранное'>
+    }
+    function unfavorite() {
+        <img id='fav' style='float: right;' class='images' src='/css/noun-star-1058637.png' onclick='favorite()' alt='Избранное'>
+            }
+</script>;
+
