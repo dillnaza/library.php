@@ -32,30 +32,20 @@
     </div>
 </form>
 
+<?php include 'connect.php'?>
 <script>
     function catForm()
     {
-        event.preventDefault();
-        //мнда категорияны алп оны $cat ка жазатн код керек
-        // php $_GET(cat[$cat=2])?
-
+        let o = document.getElementsByName('cat[]');
+        let l = o.length;
+        let i;
+        for (i=0; i<l; i++)
+        if (o[i] === e) {ind = i; break;}
+        alert(ind);
     }
 </script>
 
-<?php include 'connect.php'?>
-
 <form id="catForm" align="center">
-    <script>
-        let ind;
-        function ins(e){
-            let o = document.getElementsByName('cat[]');
-            let l = o.length;
-            let i;
-            for (i=0; i<l; i++)
-                if (o[i] == e) {ind = i; break;}
-            alert(ind);
-        }
-    </script>
     <div>
         <h2>Список книг <?php echo $cat=5?> категории:</h2>
         <div>
@@ -78,19 +68,24 @@ function openAddForm() {
     event.preventDefault();
     document.getElementById('addForm').style.display = "block";
 }
+
+    function changeForm() {
+        event.preventDefault();
+        document.getElementById('changeForm').style.display = "block";
+    }
 </script>
 
 <form align="center" id="addForm" style="display: none"  class="hystmodaladd" method="post">
     <h3 class="fw-bold mb-0">Добавить данные</h3><br>
     <div>
         <label for="bookInput"> Называние книги:</label>
-        <input type="text" name="bookInput">
+        <input type="text" id="bookInput">
     </div><br>
     <div>
         <label for="catInput">Категория книги:</label>
-        <input type="text" name="catInput">
+        <input type="text" id="catInput">
     </div><br>
-    <button class="btn btn-cta-secondary" onclick="reAddForm()">Добавить</button>
+    <button type="submit" class="btn btn-cta-secondary" onclick="reAddForm()">Добавить</button>
     <button class="btn btn-cta-secondary" onclick="closeAddForm()">Закрыть</button>
 </form>
 
@@ -109,23 +104,17 @@ function openAddForm() {
         document.getElementById('bookInput').value = "";
         document.getElementById('catInput').value = "";
     }
-
-    function changeForm() {
-        event.preventDefault();
-        document.getElementById('changeForm').style.display = "block";
-    }
 </script>
 
 <form align="center" id="changeForm" style="display: none;"  class="hystmodalchan" method="post">
     <h3>Изменение</h3>
     <div>
         <label for="bookInput"> Называние книги:</label>
-        <input type="text" id="book1Input">
+        <input type="text" name="book1Input">
     </div><br>
     <div>
-
         <label for="catInput">Категория книги: </label>
-        <input type="text" id="сat1Input">
+        <input type="text" name="сat1Input">
     </div><br>
     <button type="submit " class="btn btn-cta-secondary" onclick="reChangeForm()">Изменить</button>
     <button  class="btn btn-cta-secondary" onclick="closeChangeForm()">Закрыть</button>
@@ -141,7 +130,7 @@ function openAddForm() {
 
     function reChangeForm() {
         event.preventDefault();
-        //sql на ихменение
+        <?php include 'change.php'?>
         document.getElementById('changeForm').style.display = "none";
         document.getElementById('book1Input').value = "";
         document.getElementById('cat1Input').value = "";
@@ -163,17 +152,10 @@ function openAddForm() {
         document.getElementById('deleteForm').style.display = "block";
     }
 
-    function closeDelForm() {
-        event.preventDefault();
-        //удалить ке х деген кнопка кою керек
-        document.getElementById('bookDelete').value = "";
-        document.getElementById('catDelete').value = "";
-    }
-
     function deleteForm() {
         event.preventDefault();
+        <?php include 'delete.php';?>
         document.getElementById('deleteForm').style.display = "none";
-        <?php ?>
     }
 
     function cancelForm() {
@@ -181,28 +163,5 @@ function openAddForm() {
         document.getElementById('deleteForm').style.display = "none";
     }
 </script>
-
-<script>
-    let modal = document.getElementById('addForm');
-
-    let btn = document.getElementById("add");
-
-    let span = document.getElementsByClassName("close")[0];
-
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
-
 </body>
 </html>
