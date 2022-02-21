@@ -14,10 +14,6 @@
             <div class="navbar-collapse collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li lass="title"><h2>Библиотека "GoodReader"</h2></li>
-                    <li><input name="search" type="text"><img src="/css/noun-search-4602119.png" class="images" onclick="search()"></li>
-                    <li><div class="search">
-                            <input type="text" value="Site search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Site search';}"/>
-                            </li>
                 </ul>
             </div>
         </nav>
