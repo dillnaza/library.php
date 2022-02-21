@@ -32,11 +32,8 @@
     </div>
 </form>
 
-<div class="box">
-    <p>jksrhn jhfkjdhfkjsdh skdjfhkdjsfh sjkdfhs</p>
-</div>
-
 <?php include 'connect.php'?>
+
 <script>
     function catForm()
     {

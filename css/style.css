@@ -84,23 +84,18 @@ a.btn-cta-secondary,
 .promo .meta a {
     color: #0a7396;
 }
-#block {
+
+.box {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2), 0 4px 6px rgba(0,0,0,0.2);
     width: 80%;
     height: 50px;
-    border: 1px solid #eebf3f;
-    border-radius: 7px;
     margin-left: auto;
     margin-right: auto;
     line-height: 50px;
+    background: white;
+    border-radius: 5px;
 }
-.box {
-    background: #f5efef;
-    display: inline-block;
-    width: 195px;
-    height: 93px;
-    margin: 50px;
-    box-shadow: 0 14px 28px rgba(19, 18, 18, 0.34), 0 10px 10px rgba(21, 20, 20, 0.24);
-}
+
 .images {
     height: 33px;
     width: 33px;
