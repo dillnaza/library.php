@@ -78,6 +78,10 @@
         document.getElementById('deleteForm').style.display = "block";
     }
 
+    function favorite() {
+
+    }
+
 </script>
 
 <form align="center" id="addForm" style="display: none"  class="hystmodaladd" method="post">
