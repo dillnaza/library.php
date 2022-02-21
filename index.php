@@ -10,10 +10,10 @@
 <body  data-spy="scroll">
 <header id="header" class="header">
     <div class="container">
-        <nav id="main-nav" class="main-nav navbar-right" role="navigation">
+        <nav role="navigation">
             <div class="navbar-collapse collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item"><a>About</a></li>
+                    <li lass="title"><h2>Библиотека "GoodReader"</h2></li>
                 </ul>
             </div>
         </nav>
@@ -22,7 +22,6 @@
 
 <form id="promo" class="promo section offset-header">
     <div class="container text-center">
-        <h2 class="title">Библиотека</h2>
         <div class="btn" id="butt">
         <button class="btn btn-cta-secondary" value=1 name="cat[]" onclick="catForm()">1-категория</button>
         <button class="btn btn-cta-primary" value="2" name="cat[]" onclick="catForm()">2-категория</button>
@@ -79,11 +78,6 @@ function openAddForm() {
     event.preventDefault();
     document.getElementById('addForm').style.display = "block";
 }
-
-function changeForm() {
-    event.preventDefault();
-    document.getElementById('changeForm').style.display = "block";
-}
 </script>
 
 <form align="center" id="addForm" style="display: none"  class="hystmodaladd" method="post">
@@ -103,8 +97,6 @@ function changeForm() {
 <script>
     function reAddForm() {
         event.preventDefault();
-        /*let book = document.getElementById('bookInput').value;
-        let cat=document.getElementById('catInput').value;*/
         <?php include 'add.php';?>
         document.getElementById('addForm').style.display = "none";
         document.getElementById('bookInput').value = "";
@@ -117,9 +109,14 @@ function changeForm() {
         document.getElementById('bookInput').value = "";
         document.getElementById('catInput').value = "";
     }
+
+    function changeForm() {
+        event.preventDefault();
+        document.getElementById('changeForm').style.display = "block";
+    }
 </script>
 
-<form align="center" id="changeForm" style="display: none;"  class="hystmodalchan">
+<form align="center" id="changeForm" style="display: none;"  class="hystmodalchan" method="post">
     <h3>Изменение</h3>
     <div>
         <label for="bookInput"> Называние книги:</label>
@@ -127,7 +124,8 @@ function changeForm() {
     </div><br>
     <div>
 
-        <label for="catInput">Категория книги: <?php $cat?></label>
+        <label for="catInput">Категория книги: </label>
+        <input type="text" id="сat1Input">
     </div><br>
     <button type="submit " class="btn btn-cta-secondary" onclick="reChangeForm()">Изменить</button>
     <button  class="btn btn-cta-secondary" onclick="closeChangeForm()">Закрыть</button>
