@@ -57,8 +57,9 @@
                 Количество книг:
                 <?php include 'category.php'?>
             </h4>
+            <div class="box"> <p>sjdfhweruifhwrfu wcfhisufwiuwegf fuwegdbg</p></div>
             <h3>
-                <div >
+                <div>
                 <?php include 'category 2.php'?>
                 </div>
             </h3>
