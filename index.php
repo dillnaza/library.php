@@ -32,6 +32,10 @@
     </div>
 </form>
 
+<div class="box">
+    <p>jksrhn jhfkjdhfkjsdh skdjfhkdjsfh sjkdfhs</p>
+</div>
+
 <?php include 'connect.php'?>
 <script>
     function catForm()
@@ -57,7 +61,6 @@
                 Количество книг:
                 <?php include 'category.php'?>
             </h4>
-            <div class="box"> <p>sjdfhweruifhwrfu wcfhisufwiuwegf fuwegdbg</p></div>
             <h3>
                 <div>
                 <?php include 'category 2.php'?>
