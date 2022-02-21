@@ -93,7 +93,7 @@ a.btn-cta-secondary,
     margin-right: auto;
     line-height: 50px;
     vertical-align: middle;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2), 0 4px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.2);
 }
 .images {
     height: 33px;

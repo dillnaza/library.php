@@ -20,7 +20,7 @@
     </div>
 </header>
 
-<form id="promo" class="promo section offset-header" method="get">
+<form id="promo" class="promo section offset-header">
     <div class="container text-center">
         <h2 class="title">Библиотека</h2>
         <div class="btn" id="butt">
@@ -65,7 +65,9 @@
                 <?php include 'category.php'?>
             </h4>
             <h3>
+                <div >
                 <?php include 'category 2.php'?>
+                </div>
             </h3>
         </div>
     </div>
