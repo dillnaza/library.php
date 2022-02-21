@@ -49,8 +49,12 @@
     <div>
         <h2>Список книг <?php echo $cat=2?> категории:</h2>
         <div>
+            <div style="padding-left: 65%">
             <button id="add" class="btn btn-cta-secondary" onclick="openAddForm()">Добавить новую книгу</button>
-            <h4 style="color: #122b40; padding-left: 68%" >Количество книг:
+            </div>
+            <h4 style="color: #122b40; padding-right: 65%" >
+                <img src="/css/noun-sort-1590833.png" class="images">
+                Количество книг:
                 <?php include 'category.php'?>
             </h4>
             <h3>
