@@ -13,7 +13,7 @@
         <nav role="navigation">
             <div class="navbar-collapse collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li lass="title"><h2>Библиотека "GoodReader"</h2></li>
+                    <li><h2>Библиотека "GoodReader"</h2></li>
                 </ul>
             </div>
         </nav>
@@ -54,14 +54,12 @@
             <button id="add" class="btn btn-cta-secondary" onclick="openAddForm()">Добавить новую книгу</button>
             </div>
             <h4 style="color: #122b40; padding-right: 65%" >
-                <img src="/css/noun-sort-1590833.png" class="images" onclick="sort()">
+                <img src="/css/noun-sort-1590833.png" class="images" onclick="sort()" alt="Сортироваит">
                 Количество книг:
                 <?php include 'category.php'?>
             </h4>
             <h3>
-                <div>
                 <?php include 'category 2.php'?>
-                </div>
             </h3>
         </div>
     </div>
@@ -88,7 +86,7 @@
     }
 
     function sort() {
-
+        <?php include 'sort.php'?>
     }
 
 </script>
@@ -127,11 +125,11 @@
 <form align="center" id="changeForm" style="display: none;"  class="hystmodalchan" method="post">
     <h3>Изменение</h3>
     <div>
-        <label for="bookInput"> Называние книги:</label>
+        <label for="book1Input"> Называние книги:</label>
         <input type="text" name="book1Input" id="book1Input">
     </div><br>
     <div>
-        <label for="catInput">Категория книги: </label>
+        <label for="cat1Input">Категория книги: </label>
         <input type="text" name="сat1Input" id="cat1Input">
     </div><br>
     <button type="submit " class="btn btn-cta-secondary" onclick="reChangeForm()">Изменить</button>

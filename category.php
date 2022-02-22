@@ -5,4 +5,3 @@ GROUP BY category.category
 HAVING ((category.category)=$cat)");
 while ($resul = mysqli_fetch_array($sqlCount))
     echo "{$resul['Cname']}</br>";
-?>

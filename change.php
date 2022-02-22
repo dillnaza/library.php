@@ -5,4 +5,3 @@ $chan = $mysqli->query("UPDATE book SET name = $book1, category = $category1 WHE
 if ($chan == true) echo "Информация изменена";
 else echo "Информация не не изменена";
 echo "</br>";
-?>
