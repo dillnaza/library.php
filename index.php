@@ -22,21 +22,23 @@
 
 <form id="promo" class="promo section offset-header" method="get">
     <div class="container text-center">
-        <div class="btn" id="butt">
-            <button class="btn btn-cta-secondary" value=1 name="cat[]">1-категория</button>
-            <button class="btn btn-cta-primary" value="2" name="cat[]">2-категория</button>
-            <button class="btn btn-cta-secondary" value="3" name="cat[]">3-категория</button>
-            <button class="btn btn-cta-primary" value="4" name="cat[]">4-категория</button>
-            <button class="btn btn-cta-secondary" value="5" name="cat[]">5-категория</button>
+        <div class="btn">
+            <button class="btn btn-cta-secondary" value=1 name="cat[]" onclick="<?php $cat = 1 ?>">1-категория</button>
+            <button class="btn btn-cta-primary" value="2" name="cat[]" onclick="<?php $cat = 2 ?>">2-категория</button>
+            <button class="btn btn-cta-secondary" value="3" name="cat[]" onclick="<?php $cat = 3 ?>">3-категория
+            </button>
+            <button class="btn btn-cta-primary" value="4" name="cat[]" onclick="<?php $cat = 4 ?>">4-категория</button>
+            <button class="btn btn-cta-secondary" value="5" name="cat[]" onclick="<?php $cat = 5 ?>">5-категория
+            </button>
         </div>
     </div>
 </form>
 
-<?php include 'connect.php' ?>
+<?php include 'connect.php'; ?>
 
 <form id="catForm" align="center">
     <div>
-        <h2>Список книг <?php echo $cat = 1 ?> категории:</h2>
+        <h2>Список книг <?php echo $cat ?> категории:</h2>
         <div>
             <div style="padding-left: 65%">
                 <button id="add" class="btn btn-cta-secondary" onclick="openAddForm()">Добавить новую книгу</button>
