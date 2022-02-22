@@ -20,32 +20,31 @@
     </div>
 </header>
 
-<form id="promo" class="promo section offset-header">
+<form id="promo" class="promo section offset-header" method="get">
     <div class="container text-center">
         <div class="btn" id="butt">
-        <button class="btn btn-cta-secondary" value=1 name="cat[]" onclick="catForm()">1-категория</button>
-        <button class="btn btn-cta-primary" value="2" name="cat[]" onclick="catForm()">2-категория</button>
-        <button class="btn btn-cta-secondary" value="3" name="cat[]" onclick="catForm()">3-категория</button>
-        <button class="btn btn-cta-primary" value="4" name="cat[]" onclick="catForm()">4-категория</button>
-        <button class="btn btn-cta-secondary"  value="5" name="cat[]" onclick="catForm()">5-категория</button>
+        <radio class="btn btn-cta-secondary" value=1 name="cat[]">1-категория</radio>
+        <radio class="btn btn-cta-primary" value="2" name="cat[]">2-категория</radio>
+        <radio class="btn btn-cta-secondary" value="3" name="cat[]">3-категория</radio>
+        <radio class="btn btn-cta-primary" value="4" name="cat[]">4-категория</radio>
+        <radio class="btn btn-cta-secondary"  value="5" name="cat[]">5-категория</radio>
     </div>
     </div>
 </form>
 
 <?php include 'connect.php'?>
 
-<script>
-    function catForm()
-    {
-        let o = document.getElementsByName('cat[]');
-        let l = o.length;
-        let i;
-        for (i=0; i<l; i++)
-        if (o[i] === e) {ind = i; break;}
-        alert(ind);
-    }
-</script>
+<?php
+if(!empty($_GET['product']))
+{
+    // Можно перебрать все поля
+    foreach($_GET['product'] as $k => $v)
+        echo "$k : $v <br>";
 
+    // Или обратиться к конкретному полю
+    echo $_GET['product']['name'];
+}
+?>
 <form id="catForm" align="center">
     <div>
         <h2>Список книг <?php echo $cat=2?> категории:</h2>
