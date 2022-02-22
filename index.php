@@ -36,7 +36,7 @@
 <?php include 'connect.php'; ?>
 
 <script>
-    let cat=1
+    let cat = 1
 
     function click1() {
         cat = 1
@@ -61,8 +61,8 @@
 
 <form id="catForm" align="center">
     <div>
-        <h2>Список книг <
-            <script>let cat=1</script>
+        <h2>Список книг
+            <script>let cat = 1</script>
             категории:
         </h2>
         <div>
