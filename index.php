@@ -59,7 +59,7 @@
                 <?php include 'category.php'?>
             </h4>
             <h3>
-                <?php include 'category 2.php'?>
+                <?php include 'bookname.php' ?>
             </h3>
         </div>
     </div>
