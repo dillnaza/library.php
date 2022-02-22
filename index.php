@@ -23,28 +23,17 @@
 <form id="promo" class="promo section offset-header" method="get">
     <div class="container text-center">
         <div class="btn" id="butt">
-        <radio class="btn btn-cta-secondary" value=1 name="cat[]">1-категория</radio>
-        <radio class="btn btn-cta-primary" value="2" name="cat[]">2-категория</radio>
-        <radio class="btn btn-cta-secondary" value="3" name="cat[]">3-категория</radio>
-        <radio class="btn btn-cta-primary" value="4" name="cat[]">4-категория</radio>
-        <radio class="btn btn-cta-secondary"  value="5" name="cat[]">5-категория</radio>
+        <buttton class="btn btn-cta-secondary" value=1 name="cat[]">1-категория</buttton>
+        <buttton class="btn btn-cta-primary" value="2" name="cat[]">2-категория</buttton>
+        <buttton class="btn btn-cta-secondary" value="3" name="cat[]">3-категория</buttton>
+        <buttton class="btn btn-cta-primary" value="4" name="cat[]">4-категория</buttton>
+        <buttton class="btn btn-cta-secondary"  value="5" name="cat[]">5-категория</buttton>
     </div>
     </div>
 </form>
 
 <?php include 'connect.php'?>
 
-<?php
-if(!empty($_GET['product']))
-{
-    // Можно перебрать все поля
-    foreach($_GET['product'] as $k => $v)
-        echo "$k : $v <br>";
-
-    // Или обратиться к конкретному полю
-    echo $_GET['product']['name'];
-}
-?>
 <form id="catForm" align="center">
     <div>
         <h2>Список книг <?php echo $cat=2?> категории:</h2>
@@ -85,7 +74,7 @@ if(!empty($_GET['product']))
     }
 
     function sort() {
-        <?php include 'sort.php'?>
+        //<php include 'sort.php'?>
     }
 
 </script>
