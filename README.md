@@ -22,7 +22,7 @@
 
 ## Используемые технологии
 
-- PHP, .netCore
+- PHP
 - Система управления базами данных (MySQL)
 - HTML/CSS
 - JavaScript
