@@ -33,7 +33,7 @@
 
 1. **Клонирование репозитория:**
    ```
-   git clone https://github.com/dillnaza/library.net-core
+   git clone https://github.com/dillnaza/library.php
    ```
 
 2. **Установка зависимостей:**
