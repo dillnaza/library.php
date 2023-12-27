@@ -37,7 +37,7 @@
    ```
 
 2. **Установка зависимостей:**
-   - VisualStudio, .netCore MVC Framework
+   - PhpStorm
 
 ## Контакты
 
