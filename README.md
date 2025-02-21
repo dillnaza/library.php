@@ -38,8 +38,3 @@
 
 2. **Установка зависимостей:**
    - PhpStorm
-
-## Контакты
-
-- Email: dilnazbaikhanova@gnail.com
-- Telegram: @dillnazzza
